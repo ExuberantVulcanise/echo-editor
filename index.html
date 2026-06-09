@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>編集 — Library Editor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <a href="../" id="backBtn" aria-label="ダウンロードに戻る">←</a>
+        <h1 id="title">編集</h1>
+        <span class="header-sub">library.js generator</span>
+    </header>
+
+    <div id="editorRoot">
+        <div class="two-col">
+
+            <!-- LEFT: tree + add controls -->
+            <div class="panel" id="treePanel">
+                <div class="panel-label">ファイルツリー</div>
+                <div class="path-bar" id="pathBar"></div>
+                <div class="file-tree" id="fileTree"></div>
+                <div class="tree-actions">
+                    <button class="btn-outline" onclick="openAdd('file')">＋ ファイル</button>
+                    <button class="btn-outline" onclick="openAdd('folder')">＋ フォルダ</button>
+                    <button class="btn-danger" id="btnDelete" onclick="deleteSelected()" style="display:none">削除</button>
+                </div>
+            </div>
+
+            <!-- RIGHT: edit form + code output -->
+            <div class="panel" id="rightPanel">
+                <div class="panel-label" id="formLabel">アイテムを選択</div>
+                <div id="formArea">
+                    <div class="empty-state">
+                        <span class="empty-kanji">選</span>
+                        <span class="empty-text">ツリーからアイテムを選択するか、新規追加してください</span>
+                    </div>
+                </div>
+
+                <div class="panel-label" style="margin-top:18px">生成コード — library.js</div>
+                <pre class="code-block" id="codeOut"></pre>
+                <div class="code-actions">
+                    <button class="btn-outline" onclick="copyCode()">コピー</button>
+                    <button class="btn-primary" onclick="downloadCode()">⬇ library.js をダウンロード</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="toast" id="toast">
+        <span id="toastMsg"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
